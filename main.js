@@ -56,3 +56,32 @@ function getValues(e){
 	localStorage.setItem('name',name);
 	localStorage.setItem('email',email);
 }
+
+
+//Storing object
+
+
+var form = document.getElementById('my-form');
+
+form.addEventListener('submit',getValues);
+
+function getValues(e){
+	e.preventDefault();
+
+	var name1 = document.getElementById('name').value;
+	var email1 = document.getElementById('email').value;
+
+	localStorage.setItem('name',name);
+	// localStorage.setItem('email',email);
+
+	let myObj = {
+		name : name1,
+		email : email1
+	};
+	console.log(myObj);
+	let myObjStringify = JSON.stringify(myObj)
+	localStorage.setItem('myObj',myObjStringify);
+
+	let myobjDestringify = JSON.parse(localStorage.getItem("myObj"));
+	console.log(myobjDestringify);
+}
