@@ -85,3 +85,40 @@ function getValues(e){
 	let myobjDestringify = JSON.parse(localStorage.getItem("myObj"));
 	console.log(myobjDestringify);
 }
+
+
+
+//Multiple user using email as key value
+
+var form = document.getElementById('my-form');
+
+form.addEventListener('submit',getValues);
+
+function getValues(e){
+	e.preventDefault();
+
+	var name1 = document.getElementById('name').value;
+	var email1 = document.getElementById('email').value;
+	var phone  = document.getElementById('phone').value;
+	//localStorage.setItem('name',name);
+	// localStorage.setItem('email',email);
+	var itemList = document.getElementById('list');
+
+	var li = document.createElement('li');
+	li.className='item';
+	li.appendChild(document.createTextNode(`${name1} : ${email1} : ${phone}`));
+
+	itemList.appendChild(li);
+
+	let myObj = {
+		name : name1,
+		email : email1,
+		phone : phone
+	};
+	console.log(myObj);
+	let myObjStringify = JSON.stringify(myObj)
+	localStorage.setItem(email1,myObjStringify);
+
+	/*let myobjDestringify = JSON.parse(localStorage.getItem("myObj"));
+	console.log(myobjDestringify);*/
+}
